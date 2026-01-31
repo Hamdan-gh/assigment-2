@@ -51,6 +51,15 @@ function renderWatchlist() {
 }
 
 
+function removeFromWatchlist(movieTitle) {
+    watchlist = watchlist.filter(movie => movie !== movieTitle);
+    renderWatchlist();
+}
+
+
+
+
+
 
 
 
