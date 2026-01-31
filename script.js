@@ -40,6 +40,16 @@ function addToWatchlist(movieTitle) {
     renderWatchlist();
 }
 
+function renderWatchlist() {
+    const watchlistContainer = document.getElementById('watchlist-items');
+    watchlistContainer.innerHTML = '';
+    watchlist.forEach(movie => {
+        const item = document.createElement('div');
+        item.innerHTML = `<span>${movie}</span><button onclick="removeFromWatchlist('${movie}')">Remove</button>`;
+        watchlistContainer.appendChild(item);
+    });
+}
+
 
 
 
