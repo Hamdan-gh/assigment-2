@@ -55,6 +55,9 @@ function removeFromWatchlist(movieTitle) {
     watchlist = watchlist.filter(movie => movie !== movieTitle);
     renderWatchlist();
 }
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
 
 
 
