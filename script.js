@@ -23,3 +23,25 @@ function searchMovies() {
         });
 }
 
+function displayMovies(movies) {
+    const resultsContainer = document.getElementById('movie-results');
+    resultsContainer.innerHTML = '';
+    movies.forEach(movie => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        const posterImg = movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/150?text=No+Image';
+        card.innerHTML = `<img src="${posterImg}" alt="${movie.Title}"><h3>${movie.Title}</h3><p>${movie.Year}</p><button onclick="addToWatchlist('${movie.Title}')">Add to Watchlist</button>`;
+        resultsContainer.appendChild(card);
+    });
+}
+
+function addToWatchlist(movieTitle) {
+    watchlist.push(movieTitle);
+    renderWatchlist();
+}
+
+
+
+
+
+
