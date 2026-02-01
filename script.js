@@ -9,7 +9,7 @@ document.getElementById('search-button').addEventListener('click', searchMovies)
 //event listener when click switch light/dark mode
 document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
 
-// function decleared  for search movies to run
+// function created  for search movies to run
 function searchMovies() {
     const query = document.getElementById('search-input').value;   // get what user type in search box
     const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}`;  // combines  api key and search text
@@ -32,6 +32,7 @@ function searchMovies() {
         //throw error if something wrong
         .catch(error => {
             document.getElementById('movie-results').innerHTML = 'Error fetching data.';
+            console.error(error);
         });
 }
 
@@ -40,7 +41,7 @@ function displayMovies(movies) {
     const resultsContainer = document.getElementById('movie-results');
     resultsContainer.innerHTML = ''; // clear previous results from mixing new ones
     
-    //go through each movie one by one as foor loop
+    //go through each movie one by one as for loop
     movies.forEach(movie => {
         //create div  and assign to a variable card and given a class of movie-card
         const card = document.createElement('div');
@@ -75,7 +76,8 @@ function renderWatchlist() {
 
 
 function removeFromWatchlist(movieTitle) {
-    watchlist = watchlist.filter(movie => movie !== movieTitle);   //remove the selected movies from the array
+const index = watchlist.find(movie => movie === movieTitle);   //remove the selected movies from the array
+watchlist.splice(index,1);
     renderWatchlist(); // refresh the display
 }
 function toggleTheme() {
